@@ -1,0 +1,7 @@
+{
+	"origins": [
+		"https://tarvent.github.io",
+		"http://localhost:4321"
+	],
+	"defaultCommentOrder": "newest"
+}
