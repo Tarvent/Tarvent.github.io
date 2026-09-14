@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro'; import Footer from '../../components/Footer.astro'; import Header from '../../components/Header.astro'; import FormattedDate from '../../components/FormattedDate.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());
+---
+<html lang="zh-CN"><head><BaseHead title="文章 · Tarvent" description="AI、软件工程、Web 安全与在日生活记录。" /></head><body><Header /><main><p class="eyebrow">Writing</p><h1>文章</h1><p class="intro">从 2018 年开始积累的学习和实践记录，共 {posts.length} 篇。</p><div class="list">{posts.map(post => <a class="row" href={`${base}/blog/${post.id}/`}><div><p class="meta"><FormattedDate date={post.data.pubDate} /> · {post.data.categories.join(' / ') || '随笔'}</p><h2>{post.data.title}</h2><p>{post.data.description}</p></div><span>→</span></a>)}</div></main><Footer /></body></html>
+<style>.intro{color:var(--muted)}.list{margin-top:3rem;border-top:1px solid var(--line)}.row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:1.55rem .2rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}.row:hover h2{color:var(--accent)}.row h2{margin:.25rem 0;font-size:1.45rem}.row p{margin:0;color:var(--muted);font-size:.9rem}.row .meta{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}.row>span{align-self:center;color:var(--accent);font-size:1.4rem}</style>

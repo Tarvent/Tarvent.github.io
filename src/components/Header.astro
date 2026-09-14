@@ -1,0 +1,7 @@
+---
+import { SITE_TITLE } from '../consts'; import HeaderLink from './HeaderLink.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<header><nav><a class="brand" href={`${base}/`}><span></span>{SITE_TITLE}</a><div class="internal-links"><HeaderLink href={`${base}/`}>Home</HeaderLink><HeaderLink href={`${base}/blog`}>Writing</HeaderLink><HeaderLink href={`${base}/projects`}>Projects</HeaderLink><HeaderLink href={`${base}/about`}>About</HeaderLink></div><a class="github" href="https://github.com/Tarvent" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
+<style>header{position:sticky;top:0;z-index:10;padding:0 1rem;background:rgba(11,15,13,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}nav{max-width:1120px;min-height:70px;margin:auto;display:flex;align-items:center;gap:1.6rem}.brand{display:flex;align-items:center;gap:.65rem;margin-right:auto;color:var(--ink);font-weight:750;letter-spacing:-.03em;text-decoration:none}.brand span{width:9px;height:9px;background:var(--accent);border-radius:50%;box-shadow:0 0 18px var(--accent)}.internal-links{display:flex;align-items:center;gap:.15rem}nav :global(a){color:var(--muted);padding:.55rem .7rem;text-decoration:none;font-size:.86rem}nav :global(a:hover),nav :global(a.active){color:var(--ink)}nav :global(a.active){background:var(--surface-2);border-radius:6px}.github{border:1px solid var(--line);border-radius:6px}@media(max-width:650px){.github{display:none}nav{gap:.4rem}.brand span{display:none}nav :global(a){padding:.45rem}}
+</style>

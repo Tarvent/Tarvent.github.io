@@ -1,0 +1,28 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="en">
+	<head>
+		<BaseHead title="About · Tarvent" description="A short note about this blog." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="about">
+				<p class="eyebrow">About</p>
+				<h1>About this blog</h1>
+				<p class="lead">A small collection of technical notes, project logs, and useful references.</p>
+				<p>Mostly written to keep track of things I may want to revisit later.</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+<style>
+	.about { max-width: 760px; }
+	.about h1 { font-size: clamp(3rem, 8vw, 6.5rem); }
+	.lead { max-width: 680px; color: var(--ink); font-size: 1.35rem; }
+	.about p:not(.eyebrow):not(.lead) { color: var(--muted); }
+</style>
